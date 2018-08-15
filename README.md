@@ -9,6 +9,6 @@
 -   [ ] params vaild
 -   [x] nginx config
 -   [ ] yac
--   [ ] auto register namespace
+-   [x] auto register namespace
 -   [x] return json & jsonp
 -   [x] router

@@ -29,42 +29,38 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
     public function _initNamespaces() {
         $loader = Yaf\Loader::getInstance(APP_PATH . DS . 'service');
-        // @TODO 自动注册
-        $loader->registerLocalNameSpace([
-            'order',
-        ]);
+        // 自动注册service
+        $services = scandir(APP_SERVICE);
+        $names = [];
+        foreach ($services as $service) {
+            if ($service == '.' || $service == '..') {
+                continue;
+            }
 
-        $loader->autoload("order");
+            $names[] = basename($service, ".php");
+        }
+
+        $loader->registerLocalNameSpace($names);
+
+        foreach ($names as $name) {
+            $loader->autoload($name);
+        }
     }
 
     public function _initRoute(Yaf\Dispatcher $dispatcher) {
-        // $router = Yaf\Dispatcher::getInstance()->getRouter();
         $router = $dispatcher->getRouter();
-
         Yaf\Loader::import(APP_ROUTER . '/router.php');
         $router->addConfig($routeConfigs);
-
-        // // @TODO router
-        // $route = new Yaf\Route\Rewrite(
-        //     '/',
-        //     [
-        //         'controller' => 'index',
-        //         'action' => 'index',
-        //         'method' => 'post',
-        //     ]
-        // );
-        // 
-        // $router->addRoute('default', $route);
     }
 
     public function _initRender(Yaf\Dispatcher $dispatcher) {
-        Yaf\Dispatcher::getInstance()->autoRender(FALSE);
+        $dispatcher->autoRender(FALSE);
     }
 
     /**
      * 加载i18n
      */
-    public function _initLanguage(Yaf\Dispatcher $dispatcher) {
+    public function _initLanguage() {
         $lang = new Lang();
     }
 
