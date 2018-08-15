@@ -1,6 +1,7 @@
 <?php
 define("DS", '/');
 define("APP_PATH", realpath(dirname(__FILE__) . DS . '..' . DS . 'app' . DS));
+define("APP_CONFIG", realpath(dirname(__FILE__) . DS . '..' . DS . 'conf' . DS));
 define("BASE_PATH", realpath(dirname(__FILE__) . DS . '..' . DS));
 define("APP_ROUTER", realpath(dirname(__FILE__) . DS . '..' . DS . 'app' . DS . 'router' . DS));
 define("APP_SERVICE", realpath(dirname(__FILE__) . DS . '..' . DS . 'app' . DS . 'service' . DS));
@@ -11,5 +12,5 @@ define("BASEURL", HTTP . DOMAIN);
 
 date_default_timezone_set("Asia/Shanghai");
 
-$app = new \Yaf\Application(APP_PATH . "/conf/app.ini");
+$app = new \Yaf\Application(APP_CONFIG . DS . "app.ini");
 $app->bootstrap()->run();

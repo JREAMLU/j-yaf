@@ -10,8 +10,6 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     public function _initConfig() {
         // 把配置保存起来
         $this->_config = Yaf\Application::app()->getConfig();
-        // $charset = $this->_config->application->common->charset;
-        // header("Content-Type: application/json; charset=$charset");
     }
 
     /**
@@ -28,7 +26,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     }
 
     public function _initNamespaces() {
-        $loader = Yaf\Loader::getInstance(APP_PATH . DS . 'service');
+        $loader = Yaf\Loader::getInstance(APP_SERVICE);
         // 自动注册service
         $services = scandir(APP_SERVICE);
         $names = [];
