@@ -4,5 +4,5 @@ if (empty($lang) || !is_array($lang)) {
 }
 
 $lang = array_merge($lang, [
-    "NICK_NAME" => "昵称",
+    "SUCCESS" => "成功",
 ]);

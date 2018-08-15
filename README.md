@@ -8,7 +8,7 @@
 -   [ ] error handle
 -   [ ] params vaild
 -   [x] nginx config
--   [ ] yac
+-   [x] yac
 -   [x] auto register namespace
 -   [x] return json & jsonp
 -   [x] router

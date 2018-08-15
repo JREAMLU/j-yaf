@@ -19,7 +19,7 @@ class Lang {
      * 对外获取语言的方法
      * @param unknown_type $key
      */
-    public static function goLang($key = '') {
+    public static function out($key = '') {
         if ($key == '') {
             return false;
         }

@@ -16,7 +16,16 @@ class ApiController extends _BaseController {
         $order = new Order();
         $a['number'] = $order->getNumber();
 
-        $this->responeJSON($a);
+        $re = [
+            'status' => 0,
+            'data' => $a,
+            'message' => lang::out('SUCCESS'),
+        ];
+        
+        $yac = new Yac();
+        $yac->set('name', 'yac');
+
+        $this->responeJSON($re);
     }
 
     public function jsonpAction() {
@@ -32,6 +41,10 @@ class ApiController extends _BaseController {
 
         $order = new Order();
         $a['number'] = $order->getNumber();
+        
+        $yac = new Yac();
+        $a['yac'] = $yac->get('name');
+        $yac->flush();
 
         $this->responeJSONP($a);
     }

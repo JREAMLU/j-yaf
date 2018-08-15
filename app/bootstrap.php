@@ -4,17 +4,13 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
     private $_config;
 
-    /**
-     * 初始化配置文件
-     **/
+    // 初始化配置文件
     public function _initConfig() {
         // 把配置保存起来
         $this->_config = Yaf\Application::app()->getConfig();
     }
 
-    /**
-     * 报错设置
-     */
+    // 报错设置
     public function _initErrors() {
         if ($this->_config->application->showErrors) {
             ini_set("display_errors", "On");
@@ -55,11 +51,12 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         $dispatcher->autoRender(FALSE);
     }
 
-    /**
-     * 加载i18n
-     */
+    // 加载i18n
     public function _initLanguage() {
         $lang = new Lang();
     }
 
+    public function _initRedis() {
+
+    }
 }
