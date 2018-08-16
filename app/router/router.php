@@ -7,7 +7,6 @@ $routeConfigs = [
         'route' => [
             'controller' => 'api',
             'action' => 'index',
-            'method' => 'post',
         ],
     ],
     [
@@ -16,7 +15,6 @@ $routeConfigs = [
         'route' => [
             'controller' => 'api',
             'action' => 'jsonp',
-            'method' => 'get',
         ],
     ],
 ];

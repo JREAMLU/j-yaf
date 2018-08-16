@@ -5,10 +5,6 @@ use Yunhack\PHPValidator\Validator;
 class ApiController extends _BaseController {
 
     public function indexAction() {
-        if (!$this->getRequest()->isPost()) {
-            $this->responeBAD();
-        }
-
         Validator::make($this->getRawData(TRUE), [
             'name' => 'present|alpha_num|length_max:10',
         ]);
@@ -42,10 +38,6 @@ class ApiController extends _BaseController {
     }
 
     public function jsonpAction() {
-        if (!$this->getRequest()->isGet()) {
-            $this->responeBAD();
-        }
-
         // $c = AppModel::setGet();
         // var_dump($c);die;
 

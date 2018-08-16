@@ -5,6 +5,10 @@ class _BaseController extends \Yaf\Controller_Abstract {
 
     public function init() {
         $this->_config = Yaf\Application::app()->getConfig();
+
+        if (!$this->getRequest()->isPost()) {
+            $this->responeBAD();
+        }
     }
 
     public function getRawData($reArr = false) {
