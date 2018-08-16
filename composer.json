@@ -1,0 +1,5 @@
+{
+    "require": {
+        "yunhack/php-validator": "^0.0.1"
+    }
+}

@@ -61,6 +61,7 @@ class Lang {
     private function loadLang($name = '') {
         if (isset($name) && $name != '') {
             if (file_exists($this->lang_url($name))) {
+                // @TODO yaf import
                 include $this->lang_url($name);
                 self::$goLang = array_merge(self::$goLang, $lang);
             }

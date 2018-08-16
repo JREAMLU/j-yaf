@@ -12,6 +12,10 @@ class _BaseController extends \Yaf\Controller_Abstract {
     }
 
     public function responeJSON($data) {
+        if (!isset($data['data']) || trim($data['data']) == '') {
+            $data['data'] = new StdClass();
+        }
+
         $data = json_encode($data);
         $response = $this->getResponse();
         $response->setHeader(
@@ -20,9 +24,14 @@ class _BaseController extends \Yaf\Controller_Abstract {
 
         $response->response();
         echo $data;
+        exit;
     }
 
     public function responeJSONP($data) {
+        if (!isset($data['data']) || trim($data['data']) == '') {
+            $data['data'] = new StdClass();
+        }
+
         $data = json_encode($data);
         $response = $this->getResponse();
         $response->setHeader(
@@ -36,6 +45,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
 
         $response->response();
         echo $data;
+        exit;
     }
 
     public function responeBAD() {

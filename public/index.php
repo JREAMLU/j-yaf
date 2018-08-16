@@ -13,5 +13,6 @@ define("BASEURL", HTTP . DOMAIN);
 
 date_default_timezone_set("Asia/Shanghai");
 
+require_once BASE_PATH . '/vendor/autoload.php';
 $app = new \Yaf\Application(APP_CONFIG . DS . "app.ini");
 $app->bootstrap()->run();
