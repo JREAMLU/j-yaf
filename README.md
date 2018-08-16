@@ -13,3 +13,13 @@
 -   [x] return json & jsonp
 -   [x] router
 -   [ ] composer & git repo
+-   [ ] manual
+    -   conf
+    -   app name
+    -   route
+    -   vaild
+    -   build composer
+    -   redis
+    -   curl
+    -   规范
+    -   c扩展
