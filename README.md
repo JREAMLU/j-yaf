@@ -6,7 +6,7 @@
 -   [x] php redis & cluster
 -   [x] curl
 -   [x] error handle
--   [ ] params vaild & 封装
+-   [x] params vaild & 封装
 -   [x] nginx config
 -   [x] yac
 -   [x] auto register namespace

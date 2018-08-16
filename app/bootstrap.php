@@ -47,6 +47,11 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         $router->addConfig($routeConfigs);
     }
 
+    public function _initVaild() {
+        Yaf\Loader::import(APP_VAILD . '/vaild.php');
+        Yaf\Registry::set('vaild', $vaildConfigs);
+    }
+
     public function _initRender(Yaf\Dispatcher $dispatcher) {
         $dispatcher->autoRender(FALSE);
     }

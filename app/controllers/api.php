@@ -1,21 +1,8 @@
 <?php
 
-use Yunhack\PHPValidator\Validator;
-
 class ApiController extends _BaseController {
 
     public function indexAction() {
-        Validator::make($this->getRawData(TRUE), [
-            'name' => 'present|alpha_num|length_max:10',
-        ]);
-        if (Validator::has_fails()) {
-            $re = [
-                'status' => Constant::PARAMS_ERROR_CODE,
-                'message' => Validator::error_msg(),
-            ];
-            $this->responeJSON($re);
-        }
-
         $a['name'] = 'LUj';
         $a['ot'] = $this->_config->application->title;
 

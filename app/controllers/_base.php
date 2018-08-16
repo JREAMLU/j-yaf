@@ -1,13 +1,38 @@
 <?php
+
+use Yunhack\PHPValidator\Validator;
+
 class _BaseController extends \Yaf\Controller_Abstract {
 
     protected $_config;
+    protected $_vaild;
 
     public function init() {
         $this->_config = Yaf\Application::app()->getConfig();
+        $this->_vaild = Yaf\Registry::get('vaild');
 
         if (!$this->getRequest()->isPost()) {
             $this->responeBAD();
+        }
+
+        $this->vaild();
+    }
+
+    public function vaild() {
+        $rawData = $this->getRawData(TRUE);
+        $route = $this->getRequest()->getControllerName() . '/' . $this->getRequest()->getActionName();
+
+        Validator::make(
+            $rawData,
+            $this->_vaild[strtolower($route)]
+        );
+
+        if (Validator::has_fails()) {
+            $re = [
+                'status' => Constant::PARAMS_ERROR_CODE,
+                'message' => Validator::error_msg(),
+            ];
+            $this->responeJSON($re);
         }
     }
 
