@@ -51,15 +51,6 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
         $dispatcher->autoRender(FALSE);
     }
 
-    // 加载i18n
-    public function _initLanguage() {
-        new Lang();
-    }
-
-    public function _initRedis() {
-        new Redisc();
-    }
-
     public function _initErrorHandler() {
         Yaf\Dispatcher::getInstance()->setErrorHandler("appErrorHandler");
     }
@@ -69,16 +60,16 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 function appErrorHandler($errno, $errstr, $errfile, $errline) {
     switch ($errno) {
     case YAF\ERR\NOTFOUND\MODULE:
-        $message = Lang::out('YAF_ERR_NOTFOUND_MODULE'); //515
+        $message = Constant::YAF_ERR_NOTFOUND_MODULE; //515
         break;
     case YAF\ERR\NOTFOUND\CONTROLLER:
-        $message = Lang::out('YAF_ERR_NOTFOUND_CONTROLLER'); //516
+        $message = Constant::YAF_ERR_NOTFOUND_CONTROLLER; //516
         break;
     case YAF\ERR\NOTFOUND\ACTION:
-        $message = Lang::out('YAF_ERR_NOTFOUND_ACTION'); //517
+        $message = Constant::YAF_ERR_NOTFOUND_ACTION; //517
         break;
     case YAF\ERR\NOTFOUND\VIEW:
-        $message = Lang::out('YAF_ERR_NOTFOUND_VIEW'); //518
+        $message = Constant::YAF_ERR_NOTFOUND_VIEW; //518
         break;
     default:
         $message = $errstr;
@@ -86,6 +77,7 @@ function appErrorHandler($errno, $errstr, $errfile, $errline) {
     }
 
     // @TODO log message
+    // echo $message;
 
     return true;
 }

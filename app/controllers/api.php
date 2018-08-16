@@ -14,7 +14,7 @@ class ApiController extends _BaseController {
         ]);
         if (Validator::has_fails()) {
             $re = [
-                'status' => Constant::PARAMS_ERROR,
+                'status' => Constant::PARAMS_ERROR_CODE,
                 'message' => Validator::error_msg(),
             ];
             $this->responeJSON($re);
@@ -30,9 +30,9 @@ class ApiController extends _BaseController {
         $a['number'] = $order->getNumber();
 
         $re = [
-            'status' => 0,
+            'status' => Constant::SUCCESS_CODE,
             'data' => $a,
-            'message' => lang::out('SUCCESS'),
+            'message' => Constant::SUCCESS_DESC,
         ];
 
         $yac = new Yac();

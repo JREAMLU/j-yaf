@@ -12,5 +12,4 @@
 -   [x] auto register namespace
 -   [x] return json & jsonp
 -   [x] router
--   [ ] composer
--   [ ] lang yaf import
+-   [ ] composer & git repo
