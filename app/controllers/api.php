@@ -35,10 +35,9 @@ class ApiController extends _BaseController {
 
         // $c = AppModel::setGet();
         // var_dump($c);die;
-        
-        $d = AppModel::setGetCluster();
-        var_dump($d);die;
-        
+
+        // $d = AppModel::setGetCluster();
+        // var_dump($d);die;
 
         $a['name'] = 'LUj';
         $a['ot'] = $this->_config->application->title;

@@ -59,4 +59,33 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
     public function _initRedis() {
         new Redisc();
     }
+
+    public function _initErrorHandler() {
+        Yaf\Dispatcher::getInstance()->setErrorHandler("appErrorHandler");
+    }
+
+}
+
+function appErrorHandler($errno, $errstr, $errfile, $errline) {
+    switch ($errno) {
+    case YAF\ERR\NOTFOUND\MODULE:
+        $message = Lang::out('YAF_ERR_NOTFOUND_MODULE'); //515
+        break;
+    case YAF\ERR\NOTFOUND\CONTROLLER:
+        $message = Lang::out('YAF_ERR_NOTFOUND_CONTROLLER'); //516
+        break;
+    case YAF\ERR\NOTFOUND\ACTION:
+        $message = Lang::out('YAF_ERR_NOTFOUND_ACTION'); //517
+        break;
+    case YAF\ERR\NOTFOUND\VIEW:
+        $message = Lang::out('YAF_ERR_NOTFOUND_VIEW'); //518
+        break;
+    default:
+        $message = $errstr;
+        break;
+    }
+
+    // @TODO log message
+
+    return true;
 }

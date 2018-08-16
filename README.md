@@ -3,9 +3,9 @@
 ## tools
 
 -   [x] yaf
--   [ ] php redis & cluster
+-   [x] php redis & cluster
 -   [x] curl
--   [ ] error handle
+-   [x] error handle
 -   [ ] params vaild
 -   [x] nginx config
 -   [x] yac
