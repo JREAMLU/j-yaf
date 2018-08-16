@@ -53,10 +53,10 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
     // 加载i18n
     public function _initLanguage() {
-        $lang = new Lang();
+        new Lang();
     }
 
     public function _initRedis() {
-
+        new Redisc();
     }
 }

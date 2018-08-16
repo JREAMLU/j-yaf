@@ -21,7 +21,7 @@ class ApiController extends _BaseController {
             'data' => $a,
             'message' => lang::out('SUCCESS'),
         ];
-        
+
         $yac = new Yac();
         $yac->set('name', 'yac');
 
@@ -33,6 +33,13 @@ class ApiController extends _BaseController {
             $this->responeBAD();
         }
 
+        // $c = AppModel::setGet();
+        // var_dump($c);die;
+        
+        $d = AppModel::setGetCluster();
+        var_dump($d);die;
+        
+
         $a['name'] = 'LUj';
         $a['ot'] = $this->_config->application->title;
 
@@ -41,7 +48,7 @@ class ApiController extends _BaseController {
 
         $order = new Order();
         $a['number'] = $order->getNumber();
-        
+
         $yac = new Yac();
         $a['yac'] = $yac->get('name');
         $yac->flush();

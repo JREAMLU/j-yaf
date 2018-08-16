@@ -3,7 +3,7 @@
 ## tools
 
 -   [x] yaf
--   [ ] php redis
+-   [ ] php redis & cluster
 -   [x] curl
 -   [ ] error handle
 -   [ ] params vaild
