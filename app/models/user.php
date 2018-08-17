@@ -1,6 +1,6 @@
 <?php
 
-class UserModel {
+class UserModel extends _MysqlModel {
 
     public function focus() {
         $sql = <<<SQL
@@ -11,6 +11,6 @@ SQL;
             ':id' => '1',
         ];
 
-        return Mysql::instance()->query($sql, $bind);
+        return $this->db->query($sql, $bind);
     }
 }

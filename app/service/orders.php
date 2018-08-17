@@ -3,6 +3,10 @@
 class Orders {
 
     public function getNumber() {
-        return 123;
+        $app = new AppModel();
+        $a = $app->setGet();
+        $b = $app->setGetCluster();
+
+        return $a . $b;
     }
 }

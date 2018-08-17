@@ -1,15 +1,15 @@
 <?php
 
-class AppModel {
+class AppModel extends _RedisModel {
 
-    public static function setGet() {
-        $redis = Redisc::client('app');
+    public function setGet() {
+        $redis = $this->redis('app');
         $redis->set('arrr2', 'aef', 10);
         return $redis->get('arrr2');
     }
-    
-    public static function setGetCluster() {
-        $redis = Redisc::clientCluster('app');
+
+    public function setGetCluster() {
+        $redis = $this->redisCluster('app');
         $redis->set('arrr3', 'edf', 10);
         return $redis->get('arrr3');
     }

@@ -27,8 +27,9 @@ class _BaseController extends \Yaf\Controller_Abstract {
         $rawData = $this->getRawData(TRUE);
         $route = $this->getRequest()->getControllerName() . '/' . $this->getRequest()->getActionName();
 
+        $data = $rawData == null ? [] : $rawData;
         Validator::make(
-            $rawData,
+            $data,
             $this->_vaild[strtolower($route)] == null ? [] : $this->_vaild[strtolower($route)]
         );
 
@@ -62,7 +63,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
     }
 
     public function responeJSONP($data) {
-        if (!isset($data['data']) || trim($data['data']) == '') {
+        if (!isset($data['data']) || (!is_array($data['data']) && trim($data['data']) == '')) {
             $data['data'] = new StdClass();
         }
 
