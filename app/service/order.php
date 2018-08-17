@@ -3,6 +3,7 @@
 class Order {
 
     public function getNumber() {
-        return 123;
+        $user = new UserModel();
+        return $user->focus();
     }
 }

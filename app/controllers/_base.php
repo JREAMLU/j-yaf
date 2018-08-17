@@ -11,6 +11,11 @@ class _BaseController extends \Yaf\Controller_Abstract {
         $this->_config = Yaf\Application::app()->getConfig();
         $this->_vaild = Yaf\Registry::get('vaild');
 
+        // error不执行
+        if (strtolower($this->getRequest()->getControllerName()) == 'error') {
+            return;
+        }
+
         if (!$this->getRequest()->isPost()) {
             $this->responeBAD();
         }
@@ -24,7 +29,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
 
         Validator::make(
             $rawData,
-            $this->_vaild[strtolower($route)]
+            $this->_vaild[strtolower($route)] == null ? [] : $this->_vaild[strtolower($route)]
         );
 
         if (Validator::has_fails()) {
@@ -41,7 +46,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
     }
 
     public function responeJSON($data) {
-        if (!isset($data['data']) || trim($data['data']) == '') {
+        if (!isset($data['data']) || (!is_array($data['data']) && trim($data['data']) == '')) {
             $data['data'] = new StdClass();
         }
 

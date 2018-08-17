@@ -13,8 +13,10 @@
 -   [x] return json & jsonp
 -   [x] router
 -   [ ] composer & git repo
+-   [x] mysql
 -   [ ] manual
     -   conf
+        -   统一下发
     -   app name
     -   route
     -   vaild
@@ -23,3 +25,5 @@
     -   curl
     -   规范
     -   c扩展
+        -   yaf
+        -   phpredis

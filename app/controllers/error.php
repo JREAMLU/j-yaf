@@ -1,4 +1,5 @@
 <?php
+
 class ErrorController extends _BaseController {
 
     public function errorAction($exception) {
