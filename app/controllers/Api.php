@@ -1,6 +1,5 @@
 <?php
 
-use App\Lib\Common;
 use App\Lib\Constant;
 use App\Lib\Requester;
 
@@ -9,9 +8,6 @@ class ApiController extends _BaseController {
     public function indexAction() {
         $a['name'] = 'LUj';
         $a['ot'] = $this->_config->application->title;
-
-        $com = new Common();
-        $a['at'] = $com->dealImg();
 
         $order = new Order();
         $a['number'] = $order->getNumber();
@@ -31,9 +27,6 @@ class ApiController extends _BaseController {
     public function jsonpAction() {
         $a['name'] = 'LUj';
         $a['ot'] = $this->_config->application->title;
-
-        $com = new Common();
-        $a['at'] = $com->dealImg();
 
         $order = new Orders();
         $a['number'] = $order->getNumber();
