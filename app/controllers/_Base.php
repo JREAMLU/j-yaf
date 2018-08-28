@@ -24,7 +24,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
     }
 
     public function vaild() {
-        $rawData = $this->getRawData(TRUE);
+        $rawData = $this->getRawData(true);
         $route = $this->getRequest()->getControllerName() . '/' . $this->getRequest()->getActionName();
 
         $data = $rawData == null ? [] : $rawData;
