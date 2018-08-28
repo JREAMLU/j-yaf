@@ -1,12 +1,16 @@
 {
-    "require": {
-        "yunhack/php-validator": "^0.0.1",
-        "app/j-yaf-lib": "^0.0.1"
-    },
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:JREAMLU/php-validator.git"
+        },
         {
             "type": "vcs",
             "url": "git@github.com:JREAMLU/j-yaf-lib.git"
         }
-    ]
+    ],
+    "require": {
+        "yunhack/php-validator": "^0.0.2",
+        "app/j-yaf-lib": "^0.0.1"
+    }
 }
