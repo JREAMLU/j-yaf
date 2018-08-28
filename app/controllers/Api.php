@@ -1,6 +1,5 @@
 <?php
 
-use App\Lib\Constant;
 use App\Lib\Requester;
 
 class ApiController extends _BaseController {
@@ -12,16 +11,10 @@ class ApiController extends _BaseController {
         $order = new Order();
         $a['number'] = $order->getNumber();
 
-        $re = [
-            'status' => Constant::SUCCESS_CODE,
-            'data' => $a,
-            'message' => Constant::SUCCESS_DESC,
-        ];
-
         $yac = new Yac();
         $yac->set('name', 'yac');
 
-        $this->responeJSON($re);
+        $this->responeJSON($a);
     }
 
     public function jsonpAction() {
@@ -42,12 +35,6 @@ class ApiController extends _BaseController {
 
         $a['ip'] = $ip;
 
-        $re = [
-            'status' => Constant::SUCCESS_CODE,
-            'data' => $a,
-            'message' => Constant::SUCCESS_DESC,
-        ];
-
-        $this->responeJSONP($re);
+        $this->responeJSONP($a);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Lib\Constant;
 use Yunhack\PHPValidator\Validator;
 
 class _BaseController extends \Yaf\Controller_Abstract {
@@ -34,11 +35,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
         );
 
         if (Validator::has_fails()) {
-            $re = [
-                'status' => Constant::PARAMS_ERROR_CODE,
-                'message' => Validator::error_msg(),
-            ];
-            $this->responeJSON($re);
+            $this->responeJSON('', Constant::PARAMS_ERROR_CODE, Validator::error_msg());
         }
     }
 
@@ -46,28 +43,40 @@ class _BaseController extends \Yaf\Controller_Abstract {
         return $reArr == true ? json_decode(file_get_contents("php://input"), 1) : file_get_contents("php://input");
     }
 
-    public function responeJSON($data) {
-        if (!isset($data['data']) || (!is_array($data['data']) && trim($data['data']) == '')) {
-            $data['data'] = new StdClass();
+    public function responeJSON($data, $code = 0, $msg = '') {
+        if (!is_array($data) && trim($data) == '') {
+            $data = new StdClass();
         }
 
-        $data = json_encode($data);
+        $resp = [
+            'status' => $code,
+            'data' => $data,
+            'message' => $msg == '' ? Constant::$text[$code] : $msg,
+        ];
+
+        $resp = json_encode($resp);
         $response = $this->getResponse();
         $response->setHeader(
             'Content-Type', 'application/json; charset=' . $this->_config->application->common->charset
         );
 
         $response->response();
-        echo $data;
+        echo $resp;
         exit;
     }
 
-    public function responeJSONP($data) {
-        if (!isset($data['data']) || (!is_array($data['data']) && trim($data['data']) == '')) {
-            $data['data'] = new StdClass();
+    public function responeJSONP($data, $code = 0, $msg = '') {
+        if (!is_array($data) && trim($data) == '') {
+            $data = new StdClass();
         }
 
-        $data = json_encode($data);
+        $resp = [
+            'status' => $code,
+            'data' => $data,
+            'message' => $msg == '' ? Constant::$text[$code] : $msg,
+        ];
+
+        $resp = json_encode($resp);
         $response = $this->getResponse();
         $response->setHeader(
             'Content-Type', 'application/json; charset=' . $this->_config->application->common->charset
@@ -75,11 +84,11 @@ class _BaseController extends \Yaf\Controller_Abstract {
 
         $callback = $this->getRequest()->getQuery('callback');
         if (!empty($callback)) {
-            $data = $callback . '(' . $data . ')';
+            $resp = $callback . '(' . $resp . ')';
         }
 
         $response->response();
-        echo $data;
+        echo $resp;
         exit;
     }
 
