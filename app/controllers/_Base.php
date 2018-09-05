@@ -43,7 +43,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
         return $reArr == true ? json_decode(file_get_contents("php://input"), 1) : file_get_contents("php://input");
     }
 
-    public function responeJSON($data, $code = 0, $msg = '') {
+    public function responeJSON($data = '', $code = 0, $msg = '') {
         if (!is_array($data) && trim($data) == '') {
             $data = new StdClass();
         }
@@ -65,7 +65,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
         exit;
     }
 
-    public function responeJSONP($data, $code = 0, $msg = '') {
+    public function responeJSONP($data = '', $code = 0, $msg = '') {
         if (!is_array($data) && trim($data) == '') {
             $data = new StdClass();
         }
