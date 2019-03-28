@@ -12,9 +12,5 @@ define("HTTP", 'http://');
 define("DOMAIN", $_SERVER['SERVER_NAME']);
 define("BASEURL", HTTP . DOMAIN);
 
-date_default_timezone_set("Asia/Shanghai");
-
-Yaf\Loader::import(BASE_PATH . '/vendor/autoload.php');
-
 $app = new \Yaf\Application(APP_CONFIG . DS . "app.ini");
 $app->bootstrap()->run();

@@ -4,8 +4,14 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
 
     private $_config;
 
+    public function _initVendor() {
+        Yaf\Loader::import(BASE_PATH . '/vendor/autoload.php');
+    }
+
     // 初始化配置文件
     public function _initConfig() {
+        date_default_timezone_set("Asia/Shanghai");
+
         // 把配置保存起来
         $this->_config = Yaf\Application::app()->getConfig();
     }
