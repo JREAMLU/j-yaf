@@ -37,6 +37,10 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract {
                 continue;
             }
 
+            if (strpos($service, ".swp") !== false) {
+                continue;
+            }
+
             $names[] = basename($service, ".php");
         }
 
