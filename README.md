@@ -35,3 +35,17 @@
     -   c扩展
         -   yaf
         -   phpredis
+
+## Example
+
+```php
+<?php
+$tables = [['name' => 'abc', 'age' => 10]];
+
+array_map(function ($list) {
+    array_walk($list, function ($v, $k) {
+        echo 'key: ' . $k . ' value: ' . $v . '<br>';
+    });
+}, $tables);
+
+```
