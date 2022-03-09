@@ -45,7 +45,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
 
     public function responeJSON($data = '', $code = 0, $msg = '') {
         if (!is_array($data) && trim($data) == '') {
-            $data = new StdClass();
+            $data = new \StdClass();
         }
 
         $resp = [
@@ -67,7 +67,7 @@ class _BaseController extends \Yaf\Controller_Abstract {
 
     public function responeJSONP($data = '', $code = 0, $msg = '') {
         if (!is_array($data) && trim($data) == '') {
-            $data = new StdClass();
+            $data = new \StdClass();
         }
 
         $resp = [
